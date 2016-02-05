@@ -1,0 +1,12 @@
+## Wordpress
+public/wp-content/uploads/
+public/wp-content/blogs.dir/
+public/wp-content/upgrade/
+public/wp-content/backup-db/
+public/wp-content/wp-cache-config.php
+public/wp-content/cache/
+public/wp-content/backups/
+public/wordpress/
+
+# Composer
+vendor

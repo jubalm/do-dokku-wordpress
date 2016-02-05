@@ -1,0 +1,19 @@
+{
+	"name": "jubal/wordpress",
+	"description": "A basic wordpress install",
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Jubal Mabaquiao",
+			"email": "jubal.mabaquiao@gmail.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"require": {
+		"php": ">=5.3.2",
+		"johnpbloch/wordpress": "4.4.2"
+	},
+	"extra": {
+    "wordpress-install-dir": "public/wordpress"
+  }
+}
