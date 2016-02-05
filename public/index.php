@@ -12,7 +12,6 @@
  * @var bool
  */
 define('WP_USE_THEMES', true);
-define('WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content');
 
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wordpress/wp-blog-header.php' );

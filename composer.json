@@ -1,6 +1,6 @@
 {
-	"name": "jubal/wordpress",
-	"description": "A basic wordpress install",
+	"name": "jubalm/do-dokku-wordpress",
+	"description": "Setup a wordpress app in digitalocean's $5 droplet using dokku",
 	"license": "GPL-2.0",
 	"authors": [
 		{
