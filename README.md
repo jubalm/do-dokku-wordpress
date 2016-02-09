@@ -1,10 +1,29 @@
-# Dititalocean's $5 droplet Wordpress Using Dokku
+# Digitalocean's $5 droplet Wordpress Using Dokku
 
 Setup a Wordpress app in Digitalocean's $5 droplet using Dokku.
 
 ## How to use this package
 
-### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean
+It is worth noting that this setup uses the wordpress convention of moving the core wordpress stuff to it's own directory so we can use it as a dependency.
+
+You don't really need to tinker much with the file system but here's a little breakdown:
+
+```
+public
+  ├─ uploads        # wordpress uploads folder
+  ├─ wordpress      # wordpress core
+  ├─ wp-content     # for wordpress plugins and theme customizations
+  ├─ index.php      # slightly modified index.php from wordpress
+  └─ wp-config.php  # modified wordpress configuration
+vendor              # contains composer dependencies
+.gitignore          # some very basic list of files to ignore
+composer.json       # recipe for our app
+nginx.conf          # see nginx.conf section below
+Procfile            # see Procfile section
+README.md           # you are here
+```
+
+#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean
 
 - Choose an image - Dokku v0.4.12 on 14.04 (at the time of writing)
 - Choose a size - $5/mo
@@ -20,15 +39,15 @@ Setup a Wordpress app in Digitalocean's $5 droplet using Dokku.
   - How many droplets? - optional (1 will suffice)
   - Choose a hostname - optional
 
-### 2. Install Composer
+#### 2. Install Composer
 
 Grab the installer [here](https://getcomposer.org/download/) according to your system and install as per instructions on their website.
 
 _* The succeeding instructions assume that `composer.phar` is executable globally. Mine resides in `/usr/local/bin/composer`_
 
-### 3. Download and setup the dokku-wordpress package
+#### 3. Download and setup the dokku-wordpress package
 
-- Download the package at [http://package.zip](http://package.zip) and extract to your project folder.
+- Download the package at [https://github.com/jubalm/do-dokku-wordpress/archive/master.zip](https://github.com/jubalm/do-dokku-wordpress/archive/master.zip) and extract to your project folder.
 - Fire up the terminal and navigate to your project folder
 - Run the following command (remember I renamed my composer executable)
   ```
@@ -36,7 +55,7 @@ _* The succeeding instructions assume that `composer.phar` is executable globall
   ```
 - Once completed, you will find a `composer.lock` file.
 
-### 4. Create the project repository
+#### 4. Create the project repository
 
 _* This assumes [git](https://git-scm.com) is installed on your system_
 
@@ -48,7 +67,7 @@ git commit -m 'init'
 
 Of course, the commit message on `-m` can be anything.
 
-### 5. Deploy
+#### 5. Deploy
 
 As dokku is pretty much similar to heroku, you can deploy your app by simply pushing a git commit to your dokku instance.
 
@@ -124,7 +143,7 @@ When the push completes, you'll see dokku does it's magic building your app. The
        http://wordpress.yourdomain.com
 ```
 
-### 6. Setup the database
+#### 6. Setup the database
 
 Fist we need to install the mariadb plugin on our dokku instance to create our database.
 
@@ -145,7 +164,7 @@ dokku mariadb:link wpdb wordpress
 - `wpdb` is the name of the database we just created
 - `wordpress` simply provides the name of our app
 
-### 7. Setup Domain name
+#### 7. Setup Domain name
 
 Nows a good time to setup the wordpress domain name.
 
