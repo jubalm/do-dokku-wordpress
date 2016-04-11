@@ -186,7 +186,7 @@ Now visit your blog from the domain name you provided and you will be redirected
 
 ## Further Customization
 
-You can find valuable resouce on dokku's webiste on how these configurations work.
+You can find valuable resouce on dokku's website on how these configurations work.
 
 #### Procfile
 
