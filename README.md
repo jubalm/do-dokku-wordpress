@@ -179,7 +179,7 @@ dokku domains:add wordpress wordpress.yourdomain.com
 Our wordpress container also needs an environment variable `DOMAIN_NAME` to setup wordpress specific urls.
 
 ```
-dokku config:add wordpress DOMAIN_NAME=wordpress.yourdomain.com
+dokku config:set wordpress DOMAIN_NAME=wordpress.yourdomain.com
 ```
 
 Now visit your blog from the domain name you provided and you will be redirected to the wordpress install page.
