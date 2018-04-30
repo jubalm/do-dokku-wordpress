@@ -186,6 +186,21 @@ dokku config:add wordpress DOMAIN_NAME=wordpress.yourdomain.com
 
 Now visit your blog from the domain name you provided and you will be redirected to the wordpress install page.
 
+#### 8. Setup a storage volume for files
+
+As configured it is impossible to make uploads, themes, plugins,... persistent. The easiest way to overcome this is to mount a local folder as a storage volume
+
+```
+sudo mkdir /opt/wordpress
+sudo mkdir /opt/wordpress/data
+dokku storage:mount wordpress /opt/wordpress/data:/app/public
+```
+
+- `/opt/wordpress` is an application specific folder for this application
+- `/opt/wordpress/data` is a data folder inside of your app specific folder
+- `wordpress` is the name of our app
+- `/app/public` is the the directory in your container where /opt/wordpress/data gets mounted
+
 ## Further Customization
 
 You can find valuable resouce on dokku's website on how these configurations work.
