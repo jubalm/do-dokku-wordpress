@@ -1,6 +1,6 @@
-# Digitalocean's $5 droplet Wordpress Using Dokku
+# Install Wordpress Using Dokku
 
-Setup a Wordpress app in Digitalocean's $5 droplet using Dokku.
+Setup a Wordpress app using Dokku and any system (not just a 5$ droplet as the original used to say).
 
 ## How to use this package
 
@@ -23,7 +23,9 @@ Procfile            # see Procfile section
 README.md           # you are here
 ```
 
-#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean
+#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean 
+
+**ALTERNATIVELY: just make sure you have composer installed on your local machine and have dokku running on your deployment server/machine**
 
 - Choose an image - Dokku v0.4.12 on 14.04 (at the time of writing)
 - Choose a size - $5/mo
@@ -183,6 +185,28 @@ dokku config:add wordpress DOMAIN_NAME=wordpress.yourdomain.com
 ```
 
 Now visit your blog from the domain name you provided and you will be redirected to the wordpress install page.
+
+#### 8. Setup a storage volume for files
+
+As configured it is impossible to make uploads, themes, plugins,... persistent. The easiest way to overcome this is to mount a local folder as a storage volume.
+
+```
+sudo mkdir -p /var/lib/dokku/data/storage/wordpress/public
+sudo chown -R dokku:dokku /var/lib/dokku/data/storage/wordpress/
+sudo chown -R 32767:32767 /var/lib/dokku/data/storage/wordpress/
+dokku storage:mount wordpress /var/lib/dokku/data/storage/wordpress/public/:/app/public/
+```
+
+- `/opt/wordpress` is an application specific folder for this application
+- `/opt/wordpress/data` is a data folder inside of your app specific folder
+- `wordpress` is the name of our app
+- `/app/public` is the the directory in your container where /opt/wordpress/data gets mounted
+
+For this to work, you need to rebuild the app
+
+```
+dokku ps:rebuild wordpress
+```
 
 ## Further Customization
 
