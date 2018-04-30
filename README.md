@@ -25,7 +25,7 @@ README.md           # you are here
 
 #### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean 
 
-** ALTERNATIVELY: just make sure you have composer installed on your local machine and have dokku running on your deployment server/machine **
+**ALTERNATIVELY: just make sure you have composer installed on your local machine and have dokku running on your deployment server/machine**
 
 - Choose an image - Dokku v0.4.12 on 14.04 (at the time of writing)
 - Choose a size - $5/mo
