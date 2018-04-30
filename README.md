@@ -191,9 +191,10 @@ Now visit your blog from the domain name you provided and you will be redirected
 As configured it is impossible to make uploads, themes, plugins,... persistent. The easiest way to overcome this is to mount a local folder as a storage volume.
 
 ```
-sudo mkdir /opt/wordpress
-sudo mkdir /opt/wordpress/data
-dokku storage:mount wordpress /opt/wordpress/data:/app/public
+sudo mkdir -p /var/lib/dokku/data/storage/wordpress/public
+sudo chown -R dokku:dokku /var/lib/dokku/data/storage/wordpress/
+sudo chown -R 32767:32767 /var/lib/dokku/data/storage/wordpress/
+dokku storage:mount wordpress /var/lib/dokku/data/storage/wordpress/public/:/app/public/
 ```
 
 - `/opt/wordpress` is an application specific folder for this application
