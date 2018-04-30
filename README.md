@@ -188,7 +188,7 @@ Now visit your blog from the domain name you provided and you will be redirected
 
 #### 8. Setup a storage volume for files
 
-As configured it is impossible to make uploads, themes, plugins,... persistent. The easiest way to overcome this is to mount a local folder as a storage volume
+As configured it is impossible to make uploads, themes, plugins,... persistent. The easiest way to overcome this is to mount a local folder as a storage volume.
 
 ```
 sudo mkdir /opt/wordpress
@@ -200,6 +200,12 @@ dokku storage:mount wordpress /opt/wordpress/data:/app/public
 - `/opt/wordpress/data` is a data folder inside of your app specific folder
 - `wordpress` is the name of our app
 - `/app/public` is the the directory in your container where /opt/wordpress/data gets mounted
+
+For this to work, you need to rebuild the app
+
+```
+dokku ps:rebuild wordpress
+```
 
 ## Further Customization
 
