@@ -1,6 +1,6 @@
-# Digitalocean's $5 droplet Wordpress Using Dokku
+# Install Wordpress Using Dokku
 
-Setup a Wordpress app in Digitalocean's $5 droplet using Dokku.
+Setup a Wordpress app using Dokku and any system (not just a 5$ droplet as the original used to say).
 
 ## How to use this package
 
@@ -23,7 +23,9 @@ Procfile            # see Procfile section
 README.md           # you are here
 ```
 
-#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean
+#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean 
+
+** ALTERNATIVELY: just make sure you have composer installed on your local machine and have dokku running on your deployment server/machine **
 
 - Choose an image - Dokku v0.4.12 on 14.04 (at the time of writing)
 - Choose a size - $5/mo
