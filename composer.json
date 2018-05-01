@@ -15,5 +15,11 @@
 	},
 	"extra": {
     "wordpress-install-dir": "public/wordpress"
+  },
+  "scripts": {
+    "post-install-cmd":[
+      "php -r \"require 'deploy.php'; recurse_copy('public/wp-content/','public/wordpress/wp-content/');\""
+    ]
   }
+
 }

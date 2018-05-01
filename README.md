@@ -23,7 +23,13 @@ Procfile            # see Procfile section
 README.md           # you are here
 ```
 
-#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean 
+If you install plugins or themes, those changes will not be permanent. They will be removed when you rebuild the app. While this may seem like a problem, it's actually a security feature. You can place any themes or plugins under `public/wp-content/themes/` or `public/wp-content/plugins/` and they'll be automatically added to your deployed application.
+
+Say a plugin or theme gets compromised and some bad code gets embedded in one of its files, your whole site is compromised. You can just update the plugin in the repo, repush the repo and a new, clean, uncompromised website is running. Note: your database does not get affected, so make sure the bad code did not alter the database.
+
+
+
+#### 1. [Create a droplet](https://cloud.digitalocean.com/droplets/new) on digitalocean
 
 **ALTERNATIVELY: just make sure you have composer installed on your local machine and have dokku running on your deployment server/machine**
 
@@ -230,6 +236,17 @@ In case you want to increase this size, you need to customize it in 3 places:
 When you changed the size in these 3 places, repush the repository to dokku:
 
 `git add nginx.conf php.ini && git commit -m 'change upload size' && git push dokkuserv master`
+
+#### 9. SSL/HTTPS via letsencrypt
+
+By now there is no good excuse not to run letsencrypt on all your websites. There is a dokku plugin for letsencrypt, this repository is adapted to work without any problems with this plugin.
+
+For installation of this plugin check [dokku-letsencrypt on Github](https://github.com/dokku/dokku-letsencrypt).
+Afterwards, just run `dokku letsencrypt wordpress` to make the site accessible over ssl where `wordpress` is the name of your application.
+
+Do note: You might need to add your email to the application using `dokku config:set wordpress DOKKU_LETSENCRYPT_EMAIL=myemail@example.com`
+
+To auto update your certificate, use `dokku letsencrypt:auto-renew wordpress` where `wordpress` is the name of your application.
 
 ## Further Customization
 
