@@ -10,10 +10,16 @@
 	],
 	"minimum-stability": "stable",
 	"require": {
-		"php": ">=5.3.2",
-		"johnpbloch/wordpress": "4.4.2"
+		"php": "~7.0.4",
+		"johnpbloch/wordpress": "4.9.5"
 	},
 	"extra": {
     "wordpress-install-dir": "public/wordpress"
+  },
+  "scripts": {
+    "post-install-cmd":[
+      "php -r \"require 'deploy.php'; recurse_copy('public/wp-content/','public/wordpress/wp-content/');\""
+    ]
   }
+
 }
